@@ -38,7 +38,7 @@
                         -->
 
                         <mat-form-field appearance="standard" style="width: 100%;">
-                            <mat-label>Due Date</mat-label>
+                            <mat-label>Due Date (e.g. 2021-04-15)</mat-label>
                             <input matInput id="due_date" type="text" formControlName="due_date">
                             <mat-error *ngIf="performanceReviewForm.get('due_date').invalid">{{getErrorMessage()}}</mat-error>
                         </mat-form-field>

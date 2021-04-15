@@ -10,7 +10,6 @@
                 <mat-form-field class="full-width">
                     <input id="emailInput" matInput placeholder="Email" formControlName="email" autocomplete="email"
                         type="email">
-
                     <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
                         Please enter a valid email address
                     </mat-error>
@@ -18,7 +17,6 @@
                         Email
                         <strong>required</strong>
                     </mat-error>
-
                 </mat-form-field>
 
                 <br>

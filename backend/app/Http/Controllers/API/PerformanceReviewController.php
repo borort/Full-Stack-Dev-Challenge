@@ -38,12 +38,11 @@ class PerformanceReviewController extends Controller
 
     public function store(Request $request) {
         $review = PerformanceReview::create($request->toArray());
-
         $review->reviewees()->sync($request->input('reviewee'));
-
         $reviewers = $request->input('reviewer');
-
+        
         $feedback_request = [];
+
         $prf = new PerformanceReviewFeedback;
         foreach($review->reviewees as $reviewee) {
             foreach($reviewers as $reviewer) {
@@ -60,11 +59,9 @@ class PerformanceReviewController extends Controller
     public function update(Request $request, $id) {
         
         $review = PerformanceReview::find($id);
-
         $review->name = $request->input('name');
         $review->description = $request->input('description');
         $review->due_date = $request->input('due_date');
-                
         $review->save();
         $review->reviewees()->sync($request->input('reviewee'));
 
@@ -86,9 +83,7 @@ class PerformanceReviewController extends Controller
     }
 
 
-
-
-
+    // list of reviewee
     public function reviewee_index($id) {
         $reviewees = PerformanceReview::find($id)->reviewees;
         return response($reviewees);
@@ -113,7 +108,7 @@ class PerformanceReviewController extends Controller
         
     }
 
-
+    // list of reviewers given performance reviews id and reviewee id
     public function reviewer_index($id, $reviewee_id) {
         $pr_reviewee_id = PerformanceReview::find($id)
             ->reviewees->where('id', $reviewee_id)->first()
@@ -129,13 +124,14 @@ class PerformanceReviewController extends Controller
     }
 
 
+
+    // list of feedback requests
     public function feedback_requests($id) {
         $feedbacks = User::find($id)->feedbacks;
         $data =  [];
         foreach($feedbacks as $feedback) {
             $review = $feedback->reviewee->review;
             $reviewee = User::find($feedback->reviewee->user_id);
-            
             $feedback->review = $review;
             $feedback->reviewee_user = $reviewee;
             //dd($feedback);
@@ -145,7 +141,7 @@ class PerformanceReviewController extends Controller
         
     }
 
-
+    // show a specific feedback request
     public function feedback_request_show($id, $feedback_id) {
         $feedback = User::find($id)->feedbacks->where('id', $feedback_id);
         //$review = $feedback->first()->reviewee->review;

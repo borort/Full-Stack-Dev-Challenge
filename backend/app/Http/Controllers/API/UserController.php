@@ -12,6 +12,8 @@ use App\Models\User;
 class UserController extends Controller
 {
     
+
+    //list all users
     public function index() {
         
         /*
@@ -27,6 +29,7 @@ class UserController extends Controller
     }
 
 
+    // show a specific user detail
     public function show($id) {
         $user = User::find($id);
         if(!$user) {
@@ -36,7 +39,7 @@ class UserController extends Controller
         return response($user);
     }
 
-
+    // add a new user/employee
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
@@ -58,7 +61,7 @@ class UserController extends Controller
 
 
 
-
+    //update user/employee
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
@@ -93,7 +96,7 @@ class UserController extends Controller
 
     }
 
-
+    // delete user/employee
     public function destroy($id) {
         $user = User::find($id);
         if(!$user) {

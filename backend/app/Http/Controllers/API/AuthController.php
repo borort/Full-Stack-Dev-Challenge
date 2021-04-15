@@ -30,6 +30,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
 
+            // if user is admin assign ability for the auth token
             if($user->is_admin) {
                 $scope = ['role:admin'];
             } else {
@@ -42,7 +43,7 @@ class AuthController extends Controller
             
         } else {
             $response = ["message" =>'Invalid email or password'];
-            return response($response, 422);
+            return response($response, 401);
         }
     }
 

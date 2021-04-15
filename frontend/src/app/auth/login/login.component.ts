@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             .login(email.toLowerCase(), password)
             .subscribe(
                 data => {
-                    //localStorage.setItem('email', email);
+                    localStorage.setItem('savedUserEmail', email);
                     this.router.navigate(['/']);
                     
                 },
