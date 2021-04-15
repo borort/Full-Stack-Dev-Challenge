@@ -1,6 +1,7 @@
-## Full Stack Dev Challenge (PayPay)
+## Full Stack Dev Challenge
 
 By: Borort Sort
+
 Date: 2021/04/15
 
 
@@ -57,7 +58,7 @@ performance_review_feedbacks
 
 (3) Backend installation:
 - cd backend
-- Config the .env (rename .env.example file to .envinside and update database information)
+- Config the .env (rename .env.example file to .env and update database information)
 - composer install
 - php artisan key:generate
 - php artisan migrate
