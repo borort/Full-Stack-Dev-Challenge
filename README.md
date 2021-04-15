@@ -1,19 +1,17 @@
 ## Full Stack Dev Challenge (PayPay)
-https://github.com/Pay-Baymax/FullStackEngineerChallenge
 
 By: Borort Sort
 Date: 2021/04/15
 
 
 ## Assumptions
-============================
+
 - Admin and Employee user are the same user entity distinguished by role (is_admin: false/true)
 - Admin user can create a performance review, assign multiple employees/users as reviewees for that specific performance review, and assign multiple employees/users as reviewers for each reviewee's performance review
 - A reviewer can submit only one review feedback for each pending feedback request. Once submitted, the feedback cannot be edited or resubmitted
 
 
 ## Database Design
-============================
 
 users
 - id
@@ -46,17 +44,17 @@ performance_review_feedbacks
 
 
 ## Tech Stacks
-==============================
 - Backend: Laravel 8, Laravel Sanctum for API Authentication
 - Frontend: Angular 11, Angular Material design components
 - Database: MySQL
 
 
 ## How to run the apps
-==============================
 
 (1) Unzip the project folder or download the source code from my GitHub repository at: https://github.com/borort/Full-Stack-Dev-Challenge
+
 (2) Create a MySQL database
+
 (3) Backend installation:
 - cd backend
 - Config the .env (rename .env.example file to .envinside and update database information)
@@ -75,7 +73,7 @@ performance_review_feedbacks
 
 
 ## Working Functionalities
-==============================
+
 - User authentication (Login and Logout)
 - Dashboard/landing page
 - Employees page (only Admin can view this page): Admin user can create/view/update/delete employee users.
