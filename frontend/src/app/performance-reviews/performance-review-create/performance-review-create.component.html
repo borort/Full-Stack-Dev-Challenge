@@ -1,0 +1,91 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <mat-card>
+        <mat-card-content>
+            
+            <h2 *ngIf="isAddMode">Add Perfomance Review</h2>
+            <h2 *ngIf="!isAddMode">Edit Performance Review</h2>
+
+                <button mat-raised-button color="primary" [routerLink]="['/performance-reviews']">Back</button>
+                <br><br>
+                <div class="form-container">
+                    <form  [formGroup]="performanceReviewForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="standard" style="width: 100%;">
+                            <mat-label>Performance Review Name</mat-label>
+                            <input matInput id="name" type="text" formControlName="name">
+                            <mat-error *ngIf="performanceReviewForm.get('name').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        <br>
+                        
+                        <mat-form-field appearance="standard" style="width: 100%;">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput id="last_name" type="text" formControlName="description"></textarea>
+                            <mat-error *ngIf="performanceReviewForm.get('description').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        <br>
+
+                        <!--
+                        <mat-form-field appearance="standard" style="width: 50%;">
+                            <mat-label>Due Date</mat-label>
+                            <input matInput [matDatepicker]="picker"  formControlName="due_date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="performanceReviewForm.get('due_date').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                        -->
+
+                        <mat-form-field appearance="standard" style="width: 100%;">
+                            <mat-label>Due Date</mat-label>
+                            <input matInput id="due_date" type="text" formControlName="due_date">
+                            <mat-error *ngIf="performanceReviewForm.get('due_date').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        
+        
+                        <mat-form-field appearance="standard" style="width: 100%;">
+                            <mat-label>Reviewee</mat-label>
+                            <mat-select id="reviewee" formControlName="reviewee" multiple>
+                                
+                                <mat-option *ngFor="let employee of employees" [value]="employee.id">
+                                    {{employee.first_name}} {{employee.last_name}}
+                                </mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="performanceReviewForm.get('reviewee').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+
+                        <mat-form-field appearance="standard" style="width: 100%;">
+                            <mat-label>Reviewer</mat-label>
+                            <mat-select id="reviewer" formControlName="reviewer" multiple>
+                                
+                                <mat-option *ngFor="let employee of employees" [value]="employee.id">
+                                    {{employee.first_name}} {{employee.last_name}}
+                                </mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="performanceReviewForm.get('reviewer').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+
+                        
+
+                        <br><br>
+                        <button mat-raised-button color="primary" type="submit">Save</button>
+                    </form>
+                </div>
+
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
+
+
+
+  
+

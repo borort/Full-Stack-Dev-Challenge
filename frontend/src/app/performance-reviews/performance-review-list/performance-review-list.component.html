@@ -1,0 +1,49 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <h1>Performance Reviews</h1>
+
+        <button mat-raised-button color="primary" [routerLink]="['/performance-reviews/create']">Add performance review</button>
+        
+        <br><br>
+
+        <div *ngFor="let performance_review of performance_reviews">
+            <mat-card class="example-card">
+                
+                <mat-card-content>
+                    <mat-card-title>{{ performance_review.name }}</mat-card-title>
+                    <mat-card-subtitle>Due date: {{ performance_review.due_date }} | Created by:.. on ...</mat-card-subtitle>
+                    <p>
+                    {{ performance_review.description }}
+                    </p>
+                    <br>
+
+                    <table width="100%">
+                        <tr>
+                            <td>Reviewees:</td>
+                            <td>Reviewers:</td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let reviewee of performance_review.reviewees">
+                            <td>{{ reviewee.first_name }} {{ reviewee.last_name }}</td>
+                            <td>
+                                <div *ngFor="let a of [1,2]">
+                                    reviewer {{ a }} to be displayed here
+                                </div>
+                            
+                            </td>
+                            <td><button mat-raised-button color="primary">View Feedback</button></td>
+                        </tr>
+                    </table>
+
+
+                    <br><br>
+                    <button mat-raised-button color="primary" [routerLink]="['/performance-reviews/edit', performance_review.id]">Edit</button>&nbsp;
+                    <!--<button mat-raised-button color="primary">View</button>-->
+                </mat-card-content>
+                
+            </mat-card>
+            <br><br>
+        </div>
+        
+    </div>
+</div>

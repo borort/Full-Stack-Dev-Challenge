@@ -1,0 +1,63 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <h1>Employees</h1>
+
+        <button mat-raised-button color="primary" [routerLink]="['/employees/create']">Add new employee</button>
+        <br><br>
+
+        <mat-card class="example-card">
+            
+            <mat-card-content>
+
+                <table mat-table [dataSource]="dataSource" matSort  matSortActive="id" matSortDirection="desc">
+
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.id}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="first_name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.first_name}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="last_name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.last_name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.email}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.position}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let employee; let i = index;">
+                            <button mat-raised-button color="primary" class="push-right"
+                                [routerLink]="['/employees/edit', employee.id]">Edit</button>
+                            &nbsp;
+                            <button mat-raised-button color="accent" (click)="deleteUser(i, employee)">Delete</button>
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  
+                
+
+            </mat-card-content>
+            
+        </mat-card>
+
+        
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+        <mat-card>
+        <mat-card-content>
+            
+            <h2 *ngIf="isAddMode">Add Employee</h2>
+            <h2 *ngIf="!isAddMode">Edit Employee</h2>
+
+                <button mat-raised-button color="primary" [routerLink]="['/employees']">Back</button>
+                <br><br>
+                <div class="form-container">
+                    <form  [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="standard" style="width: 50%;">
+                            <mat-label>First Name</mat-label>
+                            <input matInput id="first_name" type="text" formControlName="first_name">
+                            
+                            <mat-error *ngIf="employeeForm.get('first_name').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        
+                        
+                        <mat-form-field appearance="standard" style="width: 50%;">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput id="last_name" type="text" formControlName="last_name">
+                            <mat-error *ngIf="employeeForm.get('last_name').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        <br>
+
+                        <mat-form-field appearance="standard" style="width: 50%;">
+                            <mat-label>Email</mat-label>
+                            <input matInput id="email" type="email" formControlName="email">
+                            <mat-error *ngIf="employeeForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        
+
+
+                        <mat-form-field appearance="standard" style="width: 50%;">
+                            <mat-label>Position</mat-label>
+                            <input matInput id="position" type="text" formControlName="position">
+                            
+                        </mat-form-field>
+
+
+
+                        <mat-form-field appearance="standard" style="width: 50%;">
+                            <mat-label>Password</mat-label>
+                            <input matInput id="password" type="password" formControlName="password">
+                            <mat-error *ngIf="employeeForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+
+                        <br><br>
+                        <button mat-raised-button color="primary" type="submit">Save</button>
+                    </form>
+                </div>
+
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
+
+
+
+  
+

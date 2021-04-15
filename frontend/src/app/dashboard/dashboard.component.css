@@ -1,0 +1,9 @@
+.container {
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+    /*padding-bottom: 24px !important;*/
+    display: block;
+    /*background: rgb(253, 253, 253);*/
+    /*background: #ddd;*/
+}
